@@ -1,0 +1,45 @@
+
+<div *ngIf="category">
+    <h2><span jhiTranslate="greenLightsApp.category.detail.title">Category</span> {{category.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="greenLightsApp.category.name">Name</span></dt>
+        <dd>
+            <span>{{category.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="greenLightsApp.category.level">Level</span></dt>
+        <dd>
+            <span>{{category.level}}</span>
+        </dd>
+        <dt><span jhiTranslate="greenLightsApp.category.parent">Parent</span></dt>
+        <dd>
+            <span>{{category.parent}}</span>
+        </dd>
+        <dt><span jhiTranslate="greenLightsApp.category.order">Order</span></dt>
+        <dd>
+            <span>{{category.order}}</span>
+        </dd>
+        <dt><span jhiTranslate="greenLightsApp.category.state">State</span></dt>
+        <dd>
+            <span>{{category.state}}</span>
+        </dd>
+        <dt><span jhiTranslate="greenLightsApp.category.createTime">Create Time</span></dt>
+        <dd>
+            <span>{{category.createTime | date:'medium'}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'category-green-lights/'+ category.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

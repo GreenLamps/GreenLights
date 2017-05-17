@@ -1,0 +1,42 @@
+entity Category{
+    name String required
+    level Integer
+    parent Long
+    order Integer
+    state Integer
+    createTime ZonedDateTime
+}
+entity Content{
+    title String required maxlength(64)
+    source String
+    author String
+    cover String
+    image Blob 
+    content String
+    hot Integer
+    state Integer
+    viewCount Integer
+    createTime ZonedDateTime
+}
+entity Attachment{
+  	name String required maxlength(64)
+    path String required maxlength(128)
+    download Integer
+    state Integer
+    createTime ZonedDateTime
+}
+
+relationship OneToMany{
+  	Category{content} to Content,
+    Content{attachment} to Attachment
+}
+// Set pagination options
+paginate Category with infinite-scroll
+paginate Content with pagination
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+// Set an angular suffix
+angularSuffix * with greenLights

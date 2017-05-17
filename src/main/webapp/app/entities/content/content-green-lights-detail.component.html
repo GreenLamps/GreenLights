@@ -1,0 +1,70 @@
+
+<div *ngIf="content">
+    <h2><span jhiTranslate="greenLightsApp.content.detail.title">Content</span> {{content.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="greenLightsApp.content.title">Title</span></dt>
+        <dd>
+            <span>{{content.title}}</span>
+        </dd>
+        <dt><span jhiTranslate="greenLightsApp.content.source">Source</span></dt>
+        <dd>
+            <span>{{content.source}}</span>
+        </dd>
+        <dt><span jhiTranslate="greenLightsApp.content.author">Author</span></dt>
+        <dd>
+            <span>{{content.author}}</span>
+        </dd>
+        <dt><span jhiTranslate="greenLightsApp.content.cover">Cover</span></dt>
+        <dd>
+            <span>{{content.cover}}</span>
+        </dd>
+        <dt><span jhiTranslate="greenLightsApp.content.image">Image</span></dt>
+        <dd>
+            <div *ngIf="content.image">
+                <a (click)="openFile(content.imageContentType, content.image)" jhiTranslate="entity.action.open">open</a>
+                {{content.imageContentType}}, {{byteSize(content.image)}}
+            </div>
+        </dd>
+        <dt><span jhiTranslate="greenLightsApp.content.content">Content</span></dt>
+        <dd>
+            <span>{{content.content}}</span>
+        </dd>
+        <dt><span jhiTranslate="greenLightsApp.content.hot">Hot</span></dt>
+        <dd>
+            <span>{{content.hot}}</span>
+        </dd>
+        <dt><span jhiTranslate="greenLightsApp.content.state">State</span></dt>
+        <dd>
+            <span>{{content.state}}</span>
+        </dd>
+        <dt><span jhiTranslate="greenLightsApp.content.viewCount">View Count</span></dt>
+        <dd>
+            <span>{{content.viewCount}}</span>
+        </dd>
+        <dt><span jhiTranslate="greenLightsApp.content.createTime">Create Time</span></dt>
+        <dd>
+            <span>{{content.createTime | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="greenLightsApp.content.category">Category</span></dt>
+        <dd>
+            <div *ngIf="content.categoryId">
+                <a [routerLink]="['/category-green-lights', content.categoryId]">{{content.categoryId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'content-green-lights/'+ content.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

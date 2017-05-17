@@ -1,0 +1,47 @@
+
+<div *ngIf="attachment">
+    <h2><span jhiTranslate="greenLightsApp.attachment.detail.title">Attachment</span> {{attachment.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="greenLightsApp.attachment.name">Name</span></dt>
+        <dd>
+            <span>{{attachment.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="greenLightsApp.attachment.path">Path</span></dt>
+        <dd>
+            <span>{{attachment.path}}</span>
+        </dd>
+        <dt><span jhiTranslate="greenLightsApp.attachment.download">Download</span></dt>
+        <dd>
+            <span>{{attachment.download}}</span>
+        </dd>
+        <dt><span jhiTranslate="greenLightsApp.attachment.state">State</span></dt>
+        <dd>
+            <span>{{attachment.state}}</span>
+        </dd>
+        <dt><span jhiTranslate="greenLightsApp.attachment.createTime">Create Time</span></dt>
+        <dd>
+            <span>{{attachment.createTime | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="greenLightsApp.attachment.content">Content</span></dt>
+        <dd>
+            <div *ngIf="attachment.contentId">
+                <a [routerLink]="['/content-green-lights', attachment.contentId]">{{attachment.contentId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'attachment-green-lights/'+ attachment.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>
