@@ -10,7 +10,7 @@
 ######################
 /node/
 node_tmp/
-#node_modules/
+node_modules/
 npm-debug.log.*
 
 ######################
@@ -140,3 +140,4 @@ Desktop.ini
 ######################
 .eslintcache
 src/main/resources/config/application.yml
+node_modules/@types/ckeditor/
