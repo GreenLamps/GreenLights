@@ -2,6 +2,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { GreenLightsSharedModule } from '../../shared';
+import { CKEditorModule } from 'ng2-ckeditor';
 import {
     ContentGreenLightsService,
     ContentGreenLightsPopupService,
@@ -24,7 +25,8 @@ const ENTITY_STATES = [
 @NgModule({
     imports: [
         GreenLightsSharedModule,
-        RouterModule.forRoot(ENTITY_STATES, { useHash: true })
+        RouterModule.forRoot(ENTITY_STATES, { useHash: true }),
+        CKEditorModule
     ],
     declarations: [
         ContentGreenLightsComponent,

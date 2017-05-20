@@ -3,6 +3,7 @@ import './vendor.ts';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Ng2Webstorage } from 'ng2-webstorage';
+import { CKEditorModule } from 'ng2-ckeditor';
 
 import { GreenLightsSharedModule, UserRouteAccessService } from './shared';
 import { GreenLightsHomeModule } from './home/home.module';
@@ -33,7 +34,8 @@ import {
         GreenLightsHomeModule,
         GreenLightsAdminModule,
         GreenLightsAccountModule,
-        GreenLightsEntityModule
+        GreenLightsEntityModule,
+        CKEditorModule
     ],
     declarations: [
         JhiMainComponent,
