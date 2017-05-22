@@ -77,6 +77,7 @@ server:
     session:
         cookie:
             http-only: true
+    port: 8080
 
 
 # ===================================================================
@@ -124,3 +125,12 @@ jhipster:
 # ===================================================================
 
 application:
+    storage:
+        path:
+            base: /data/greenlights/
+            images: ${application.storage.path.base}images/%s/
+            files: ${application.storage.path.base}files/%s/
+            attaches: ${application.storage.path.base}attaches/%s/
+        uri:
+            base: /public/files/
+            images: ${application.storage.uri.base}images/%s/

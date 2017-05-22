@@ -70,7 +70,11 @@
             <!--<input type="text" class="form-control" name="content" id="field_content"
                 [(ngModel)]="content.content"
              />-->
-            <ckeditor debounce="500" name="content" id="field_content" [(ngModel)]="content.content">
+            <ckeditor debounce="500" name="content"
+                      id="field_content" [(ngModel)]="content.content"
+                      [config]="{filebrowserWindowFeatures: 'resizable=yes,scrollbars=no',
+                                filebrowserBrowseUrl: '/browser/browse.php',
+                                filebrowserImageUploadUrl: '/api/ckeditor/upload/image'}">
 
             </ckeditor>
         </div>
