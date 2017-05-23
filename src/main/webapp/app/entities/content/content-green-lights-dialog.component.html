@@ -1,114 +1,139 @@
 <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
 
     <div class="modal-header">
-        <h4 class="modal-title" id="myContentLabel" jhiTranslate="greenLightsApp.content.home.createOrEditLabel">Create or edit a Content</h4>
+        <h4 class="modal-title" id="myContentLabel" jhiTranslate="greenLightsApp.content.home.createOrEditLabel">Create
+            or edit a Content</h4>
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-                (click)="clear()">&times;</button>
+                (click)="clear()">&times;
+        </button>
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
         <div class="form-group" [hidden]="!content.id">
             <label for="id" jhiTranslate="global.field.id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
-                   [(ngModel)]="content.id" readonly />
+                   [(ngModel)]="content.id" readonly/>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="greenLightsApp.content.title" for="field_title">Title</label>
+            <label class="form-control-label" jhiTranslate="greenLightsApp.content.title"
+                   for="field_title">Title</label>
             <input type="text" class="form-control" name="title" id="field_title"
-                [(ngModel)]="content.title"
-            required maxlength="64" />
+                   [(ngModel)]="content.title"
+                   required maxlength="64"/>
             <div [hidden]="!(editForm.controls.title?.dirty && editForm.controls.title?.invalid)">
                 <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.title?.errors?.required" jhiTranslate="entity.validation.required">
-                   This field is required.
+                       [hidden]="!editForm.controls.title?.errors?.required" jhiTranslate="entity.validation.required">
+                    This field is required.
                 </small>
                 <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.title?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 64 }">
-                   This field cannot be longer than 64 characters.
+                       [hidden]="!editForm.controls.title?.errors?.maxlength" jhiTranslate="entity.validation.maxlength"
+                       translateValues="{ max: 64 }">
+                    This field cannot be longer than 64 characters.
                 </small>
             </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="greenLightsApp.content.source" for="field_source">Source</label>
+            <label class="form-control-label" jhiTranslate="greenLightsApp.content.source"
+                   for="field_source">Source</label>
             <input type="text" class="form-control" name="source" id="field_source"
-                [(ngModel)]="content.source"
-             />
+                   [(ngModel)]="content.source"
+            />
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="greenLightsApp.content.author" for="field_author">Author</label>
+            <label class="form-control-label" jhiTranslate="greenLightsApp.content.author"
+                   for="field_author">Author</label>
             <input type="text" class="form-control" name="author" id="field_author"
-                [(ngModel)]="content.author"
-             />
+                   [(ngModel)]="content.author"
+            />
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="greenLightsApp.content.cover" for="field_cover">Cover</label>
+            <label class="form-control-label" jhiTranslate="greenLightsApp.content.cover"
+                   for="field_cover">Cover</label>
             <input type="text" class="form-control" name="cover" id="field_cover"
-                [(ngModel)]="content.cover"
-             />
+                   [(ngModel)]="content.cover"
+            />
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="greenLightsApp.content.image" for="field_image">Image</label>
+            <label class="form-control-label" jhiTranslate="greenLightsApp.content.image"
+                   for="field_image">Image</label>
             <div>
                 <div *ngIf="content.image" class="form-text text-danger clearfix">
-                    <a class="pull-left" (click)="openFile(content.imageContentType, content.image)" jhiTranslate="entity.action.open">open</a><br>
+                    <a class="pull-left" (click)="openFile(content.imageContentType, content.image)"
+                       jhiTranslate="entity.action.open">open</a><br>
                     <span class="pull-left">{{content.imageContentType}}, {{byteSize(content.image)}}</span>
                     <button type="button" (click)="content.image=null;content.imageContentType=null;"
                             class="btn btn-default btn-xs pull-right">
                         <span class="fa fa-times"></span>
                     </button>
                 </div>
-                <input type="file" (change)="setFileData($event, content, 'image', false)" jhiTranslate="entity.action.addblob"/>
+                <input type="file" (change)="setFileData($event, content, 'image', false)"
+                       jhiTranslate="entity.action.addblob"/>
             </div>
             <input type="hidden" class="form-control" name="image" id="field_image"
-                [(ngModel)]="content.image"
-             />
+                   [(ngModel)]="content.image"
+            />
             <input type="hidden" class="form-control" name="imageContentType" id="field_imageContentType"
-                [(ngModel)]="content.imageContentType" />
+                   [(ngModel)]="content.imageContentType"/>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="greenLightsApp.content.content">Content</label><!--for="field_content"-->
+            <label class="form-control-label" jhiTranslate="greenLightsApp.content.content">Content</label>
+            <!--for="field_content"-->
             <!--<input type="text" class="form-control" name="content" id="field_content"
                 [(ngModel)]="content.content"
              />-->
             <ckeditor debounce="500" name="content"
                       id="field_content" [(ngModel)]="content.content"
-                      [config]="{filebrowserWindowFeatures: 'resizable=yes,scrollbars=no',
-                                filebrowserBrowseUrl: '/browser/browse.php',
-                                filebrowserImageUploadUrl: '/api/ckeditor/upload/image'}">
+                      [config]="{
+                                filebrowserWindowFeatures: 'resizable=yes,scrollbars=no',
+                                filebrowserBrowseUrl: '/ckfinder/ckfinder.html',
+                                filebrowserImageBrowseUrl: '/ckfinder/ckfinder.html?type=Images',
+                                filebrowserFlashBrowseUrl: '/ckfinder/ckfinder.html?type=Flash',
+                                filebrowserUploadUrl: '/ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Files',
+                                filebrowserFlashUploadUrl: '/ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Flash',
+                                filebrowserImageUploadUrl: '/ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Images',
+                                pasteFromWordPromptCleanup: 'true',
+                                extraPlugins: 'uploadimage,image2,embed,colordialog,tableresize,pastefromword,html5video,imagepaste,wordcount,mathjax,pbckcode,pastefromexcel,eqneditor,autosave,preview,find,chart,bgimage,backgrounds,copyformatting,googledocs,pagebreak,videosnapshot,niftytimers,attach'
+                                }">
 
             </ckeditor>
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="greenLightsApp.content.hot" for="field_hot">Hot</label>
             <input type="number" class="form-control" name="hot" id="field_hot"
-                [(ngModel)]="content.hot"
-             />
+                   [(ngModel)]="content.hot"
+            />
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="greenLightsApp.content.state" for="field_state">State</label>
+            <label class="form-control-label" jhiTranslate="greenLightsApp.content.state"
+                   for="field_state">State</label>
             <input type="number" class="form-control" name="state" id="field_state"
-                [(ngModel)]="content.state"
-             />
+                   [(ngModel)]="content.state"
+            />
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="greenLightsApp.content.viewCount" for="field_viewCount">View Count</label>
+            <label class="form-control-label" jhiTranslate="greenLightsApp.content.viewCount" for="field_viewCount">View
+                Count</label>
             <input type="number" class="form-control" name="viewCount" id="field_viewCount"
-                [(ngModel)]="content.viewCount"
-             />
+                   [(ngModel)]="content.viewCount"
+            />
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="greenLightsApp.content.createTime" for="field_createTime">Create Time</label>
+            <label class="form-control-label" jhiTranslate="greenLightsApp.content.createTime" for="field_createTime">Create
+                Time</label>
             <div class="d-flex">
-                <input id="field_createTime" type="datetime-local" class="form-control" name="createTime" [(ngModel)]="content.createTime"
-                  />
+                <input id="field_createTime" type="datetime-local" class="form-control" name="createTime"
+                       [(ngModel)]="content.createTime"
+                />
             </div>
         </div>
 
         <div class="form-group">
             <label jhiTranslate="greenLightsApp.content.category" for="field_category">Category</label>
-            <select class="form-control" id="field_category" name="category" [(ngModel)]="content.categoryId" >
+            <select class="form-control" id="field_category" name="category" [(ngModel)]="content.categoryId">
                 <option [ngValue]="null"></option>
-                <option [ngValue]="categoryOption.id" *ngFor="let categoryOption of categories; trackBy: trackCategoryById">{{categoryOption.id}}</option>
+                <option [ngValue]="categoryOption.id"
+                        *ngFor="let categoryOption of categories; trackBy: trackCategoryById">{{categoryOption.id}}
+                </option>
             </select>
         </div>
     </div>

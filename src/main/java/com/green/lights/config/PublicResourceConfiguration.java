@@ -17,6 +17,8 @@ public class PublicResourceConfiguration extends WebMvcConfigurerAdapter {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/public/files/**")
             .addResourceLocations("file:" + resourceLocation);
+        registry.addResourceHandler("/ckfinder/**")
+            .addResourceLocations("classpath:/static/ckfinder/");
         super.addResourceHandlers(registry);
     }
 }

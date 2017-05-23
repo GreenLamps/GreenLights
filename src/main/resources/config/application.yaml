@@ -128,9 +128,9 @@ application:
     storage:
         path:
             base: /data/greenlights/
-            images: ${application.storage.path.base}images/%s/
-            files: ${application.storage.path.base}files/%s/
-            attaches: ${application.storage.path.base}attaches/%s/
+            images: ${application.storage.path.base}images/
+            files: ${application.storage.path.base}files/
+            attaches: ${application.storage.path.base}attaches/
         uri:
             base: /public/files/
-            images: ${application.storage.uri.base}images/%s/
+            images: ${application.storage.uri.base}images/
