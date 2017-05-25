@@ -69,9 +69,17 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="url" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="location" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
         <dropDefaultValue tableName="content" columnName="create_time" columnDataType="datetime"/>
-        
+
     </changeSet>
 </databaseChangeLog>

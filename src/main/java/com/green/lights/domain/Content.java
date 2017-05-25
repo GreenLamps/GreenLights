@@ -72,6 +72,12 @@ public class Content implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Attachment> attachments = new HashSet<>();
 
+    @Column(name = "url")
+    private String url;
+
+    @Column(name = "location")
+    private String location;
+
     public Long getId() {
         return id;
     }
@@ -259,6 +265,31 @@ public class Content implements Serializable {
 
     public void setAttachments(Set<Attachment> attachments) {
         this.attachments = attachments;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public Content url(String url) {
+        this.url = url;
+        return this;
+    }
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public Content location(String location) {
+        this.location = location;
+        return this;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     @Override

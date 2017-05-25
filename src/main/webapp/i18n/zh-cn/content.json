@@ -1,33 +1,35 @@
 {
     "greenLightsApp": {
-        "content" : {
+        "content": {
             "home": {
-                "title": "Contents",
-                "createLabel": "Create a new Content",
-                "createOrEditLabel": "Create or edit a Content",
-                "search": "Search for Content"
+                "title": "文章",
+                "createLabel": "添加内容",
+                "createOrEditLabel": "添加或编辑",
+                "search": "搜索 ..."
             },
-            "created": "A new Content is created with identifier {{ param }}",
-            "updated": "A Content is updated with identifier {{ param }}",
-            "deleted": "A Content is deleted with identifier {{ param }}",
+            "created": "创建了标识符为 {{ param }} 的文章",
+            "updated": "更新了标识符为 {{ param }} 的文章",
+            "deleted": "删除了标识符为 {{ param }} 的文章",
             "delete": {
-                "question": "Are you sure you want to delete Content {{ id }}?"
+                "question": "确认删除 {{ id }}?"
             },
             "detail": {
-                "title": "Content"
+                "title": "文章"
             },
-            "title": "Title",
-            "source": "Source",
-            "author": "Author",
-            "cover": "Cover",
-            "image": "Image",
-            "content": "Content",
-            "hot": "Hot",
-            "state": "State",
-            "viewCount": "View Count",
-            "createTime": "Create Time",
-            "category": "Category",
-            "attachment": "Attachment"
+            "title": "文章标题",
+            "source": "来源",
+            "author": "作者",
+            "cover": "封面",
+            "image": "图片",
+            "content": "文章内容",
+            "hot": "热度",
+            "state": "状态",
+            "viewCount": "浏览次数",
+            "createTime": "创建时间",
+            "category": "文章类别",
+            "attachment": "附件",
+            "url": "链接",
+            "location": "工程地点"
         }
     }
 }

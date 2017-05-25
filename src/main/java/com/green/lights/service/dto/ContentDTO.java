@@ -42,6 +42,10 @@ public class ContentDTO implements Serializable {
 
     private Long categoryId;
 
+    private String url;
+
+    private String location;
+
     public Long getId() {
         return id;
     }
@@ -146,6 +150,22 @@ public class ContentDTO implements Serializable {
         this.categoryId = categoryId;
     }
 
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -156,7 +176,7 @@ public class ContentDTO implements Serializable {
         }
 
         ContentDTO contentDTO = (ContentDTO) o;
-        if(contentDTO.getId() == null || getId() == null) {
+        if (contentDTO.getId() == null || getId() == null) {
             return false;
         }
         return Objects.equals(getId(), contentDTO.getId());

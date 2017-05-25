@@ -1,4 +1,3 @@
-
 <div *ngIf="content">
     <h2><span jhiTranslate="greenLightsApp.content.detail.title">Content</span> {{content.id}}</h2>
     <hr>
@@ -23,7 +22,8 @@
         <dt><span jhiTranslate="greenLightsApp.content.image">Image</span></dt>
         <dd>
             <div *ngIf="content.image">
-                <a (click)="openFile(content.imageContentType, content.image)" jhiTranslate="entity.action.open">open</a>
+                <a (click)="openFile(content.imageContentType, content.image)"
+                   jhiTranslate="entity.action.open">open</a>
                 {{content.imageContentType}}, {{byteSize(content.image)}}
             </div>
         </dd>
@@ -52,6 +52,14 @@
             <div *ngIf="content.categoryId">
                 <a [routerLink]="['/category-green-lights', content.categoryId]">{{content.categoryId}}</a>
             </div>
+        </dd>
+        <dt><span jhiTranslate="greenLightsApp.content.url">URL</span></dt>
+        <dd>
+            <span>{{content.url }}</span>
+        </dd>
+        <dt><span jhiTranslate="greenLightsApp.content.location">Location</span></dt>
+        <dd>
+            <span>{{content.location }}</span>
         </dd>
     </dl>
 
