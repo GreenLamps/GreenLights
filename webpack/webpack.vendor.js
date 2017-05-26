@@ -41,7 +41,6 @@ module.exports = {
     output: {
         filename: '[name].dll.js',
         path: path.resolve('./target/www'),
-        publicPath: '/assets/',
         library: '[name]'
     },
     plugins: [

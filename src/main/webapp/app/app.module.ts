@@ -6,7 +6,7 @@ import { Ng2Webstorage } from 'ng2-webstorage';
 import { CKEditorModule } from 'ng2-ckeditor';
 
 import { GreenLightsSharedModule, UserRouteAccessService } from './shared';
-import { GreenLightsHomeModule } from './home/home.module';
+import { GreenLightsHomeModule } from './manage/home.module';
 import { GreenLightsAdminModule } from './admin/admin.module';
 import { GreenLightsAccountModule } from './account/account.module';
 import { GreenLightsEntityModule } from './entities/entity.module';
@@ -24,11 +24,14 @@ import {
     ActiveMenuDirective,
     ErrorComponent
 } from './layouts';
+import {FrontHomeModule} from './front/home/front.home.module';
+import {FrontHeaderComponent} from './front/header/front.header.component';
 
 @NgModule({
     imports: [
         BrowserModule,
         LayoutRoutingModule,
+        FrontHomeModule,
         Ng2Webstorage.forRoot({ prefix: 'jhi', separator: '-'}),
         GreenLightsSharedModule,
         GreenLightsHomeModule,
@@ -40,6 +43,7 @@ import {
     declarations: [
         JhiMainComponent,
         NavbarComponent,
+        FrontHeaderComponent,
         ErrorComponent,
         PageRibbonComponent,
         ActiveMenuDirective,

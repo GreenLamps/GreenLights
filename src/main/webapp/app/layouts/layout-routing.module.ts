@@ -1,17 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { navbarRoute } from '../app.route';
 import { errorRoute } from './';
+import {NAVBAR_ROUTE} from './navbar/navbar.route';
+import {FRONT_HEADER_ROUTE} from '../front/header/front.header.route';
 
 const LAYOUT_ROUTES = [
-    navbarRoute,
+    NAVBAR_ROUTE,
+    FRONT_HEADER_ROUTE,
     ...errorRoute
 ];
 
 @NgModule({
     imports: [
-        RouterModule.forRoot(LAYOUT_ROUTES, { useHash: true })
+        RouterModule.forRoot(LAYOUT_ROUTES, { useHash: true }),
     ],
     exports: [
         RouterModule
