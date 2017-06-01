@@ -20,7 +20,7 @@ public interface CategoryService {
 
     /**
      *  Get all the categories.
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */
@@ -42,10 +42,17 @@ public interface CategoryService {
     void delete(Long id);
 
     /**
+     * find by level
+     * @param level
+     * @return
+     */
+    List<CategoryDTO> findAllByLevel(Integer level);
+
+    /**
      * Search for the category corresponding to the query.
      *
      *  @param query the query of the search
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */

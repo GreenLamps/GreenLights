@@ -3,6 +3,8 @@ package com.green.lights.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GenerationTime;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
@@ -53,15 +55,16 @@ public class Content implements Serializable {
     private String content;
 
     @Column(name = "hot")
-    private Integer hot;
+    private Integer hot = 0;
 
     @Column(name = "state")
-    private Integer state;
+    private Integer state = 0;
 
     @Column(name = "view_count")
-    private Integer viewCount;
+    private Integer viewCount = 0;
 
     @Column(name = "create_time")
+    @Generated(GenerationTime.INSERT)
     private ZonedDateTime createTime;
 
     @ManyToOne

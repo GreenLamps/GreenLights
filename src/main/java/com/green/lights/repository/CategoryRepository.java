@@ -11,5 +11,11 @@ import java.util.List;
  */
 @SuppressWarnings("unused")
 public interface CategoryRepository extends JpaRepository<Category,Long> {
+    /**
+     *
+     * @param level
+     * @return
+     */
+    List<Category> findAllByLevel(Integer level);
 
 }

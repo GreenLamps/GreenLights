@@ -28,7 +28,7 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class CategoryServiceImpl implements CategoryService{
 
     private final Logger log = LoggerFactory.getLogger(CategoryServiceImpl.class);
-    
+
     private final CategoryRepository categoryRepository;
 
     private final CategoryMapper categoryMapper;
@@ -59,7 +59,7 @@ public class CategoryServiceImpl implements CategoryService{
 
     /**
      *  Get all the categories.
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */
@@ -97,6 +97,13 @@ public class CategoryServiceImpl implements CategoryService{
         categoryRepository.delete(id);
         categorySearchRepository.delete(id);
     }
+
+    @Override
+    public List<CategoryDTO> findAllByLevel(Integer level) {
+        List<Category> result = categoryRepository.findAllByLevel(level);
+        return categoryMapper.toDto(result);
+    }
+
 
     /**
      * Search for the category corresponding to the query.

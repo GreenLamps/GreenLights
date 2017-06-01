@@ -1,6 +1,7 @@
 package com.green.lights.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.green.lights.security.AuthoritiesConstants;
 import com.green.lights.service.CategoryService;
 import com.green.lights.web.rest.util.HeaderUtil;
 import com.green.lights.web.rest.util.PaginationUtil;
@@ -14,6 +15,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -37,7 +39,7 @@ public class CategoryResource {
     private final Logger log = LoggerFactory.getLogger(CategoryResource.class);
 
     private static final String ENTITY_NAME = "category";
-        
+
     private final CategoryService categoryService;
 
     public CategoryResource(CategoryService categoryService) {
@@ -53,6 +55,7 @@ public class CategoryResource {
      */
     @PostMapping("/categories")
     @Timed
+    @Secured(AuthoritiesConstants.ADMIN)
     public ResponseEntity<CategoryDTO> createCategory(@Valid @RequestBody CategoryDTO categoryDTO) throws URISyntaxException {
         log.debug("REST request to save Category : {}", categoryDTO);
         if (categoryDTO.getId() != null) {
@@ -62,6 +65,14 @@ public class CategoryResource {
         return ResponseEntity.created(new URI("/api/categories/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
+    }
+
+    @GetMapping("/categories/level/{level}")
+    @Timed
+    public ResponseEntity<List<CategoryDTO>> getLevelCategory(@PathVariable Integer level){
+        log.debug("REST request to getLevelCategory: {}", level);
+        List<CategoryDTO> categoryDTOS = categoryService.findAllByLevel(level);
+        return new ResponseEntity<>(categoryDTOS, HttpStatus.OK);
     }
 
     /**
@@ -75,6 +86,7 @@ public class CategoryResource {
      */
     @PutMapping("/categories")
     @Timed
+    @Secured(AuthoritiesConstants.ADMIN)
     public ResponseEntity<CategoryDTO> updateCategory(@Valid @RequestBody CategoryDTO categoryDTO) throws URISyntaxException {
         log.debug("REST request to update Category : {}", categoryDTO);
         if (categoryDTO.getId() == null) {
@@ -123,6 +135,7 @@ public class CategoryResource {
      */
     @DeleteMapping("/categories/{id}")
     @Timed
+    @Secured(AuthoritiesConstants.ADMIN)
     public ResponseEntity<Void> deleteCategory(@PathVariable Long id) {
         log.debug("REST request to delete Category : {}", id);
         categoryService.delete(id);
@@ -133,7 +146,7 @@ public class CategoryResource {
      * SEARCH  /_search/categories?query=:query : search for the category corresponding
      * to the query.
      *
-     * @param query the query of the category search 
+     * @param query the query of the category search
      * @param pageable the pagination information
      * @return the result of the search
      */
