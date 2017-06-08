@@ -16,6 +16,7 @@ import {
     contentPopupRoute,
     ContentGreenLightsResolvePagingParams,
 } from './';
+import {ImageUploadModule} from '../../image-upload/image-upload.module';
 
 const ENTITY_STATES = [
     ...contentRoute,
@@ -26,7 +27,8 @@ const ENTITY_STATES = [
     imports: [
         GreenLightsSharedModule,
         RouterModule.forRoot(ENTITY_STATES, { useHash: true }),
-        CKEditorModule
+        CKEditorModule,
+        ImageUploadModule.forRoot(),
     ],
     declarations: [
         ContentGreenLightsComponent,

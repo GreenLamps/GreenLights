@@ -129,8 +129,6 @@ public class ContentResourceIntTest {
             .source(DEFAULT_SOURCE)
             .author(DEFAULT_AUTHOR)
             .cover(DEFAULT_COVER)
-            .image(DEFAULT_IMAGE)
-            .imageContentType(DEFAULT_IMAGE_CONTENT_TYPE)
             .content(DEFAULT_CONTENT)
             .hot(DEFAULT_HOT)
             .state(DEFAULT_STATE)
@@ -165,8 +163,6 @@ public class ContentResourceIntTest {
         assertThat(testContent.getSource()).isEqualTo(DEFAULT_SOURCE);
         assertThat(testContent.getAuthor()).isEqualTo(DEFAULT_AUTHOR);
         assertThat(testContent.getCover()).isEqualTo(DEFAULT_COVER);
-        assertThat(testContent.getImage()).isEqualTo(DEFAULT_IMAGE);
-        assertThat(testContent.getImageContentType()).isEqualTo(DEFAULT_IMAGE_CONTENT_TYPE);
         assertThat(testContent.getContent()).isEqualTo(DEFAULT_CONTENT);
         assertThat(testContent.getHot()).isEqualTo(DEFAULT_HOT);
         assertThat(testContent.getState()).isEqualTo(DEFAULT_STATE);
@@ -288,8 +284,6 @@ public class ContentResourceIntTest {
             .source(UPDATED_SOURCE)
             .author(UPDATED_AUTHOR)
             .cover(UPDATED_COVER)
-            .image(UPDATED_IMAGE)
-            .imageContentType(UPDATED_IMAGE_CONTENT_TYPE)
             .content(UPDATED_CONTENT)
             .hot(UPDATED_HOT)
             .state(UPDATED_STATE)
@@ -310,8 +304,6 @@ public class ContentResourceIntTest {
         assertThat(testContent.getSource()).isEqualTo(UPDATED_SOURCE);
         assertThat(testContent.getAuthor()).isEqualTo(UPDATED_AUTHOR);
         assertThat(testContent.getCover()).isEqualTo(UPDATED_COVER);
-        assertThat(testContent.getImage()).isEqualTo(UPDATED_IMAGE);
-        assertThat(testContent.getImageContentType()).isEqualTo(UPDATED_IMAGE_CONTENT_TYPE);
         assertThat(testContent.getContent()).isEqualTo(UPDATED_CONTENT);
         assertThat(testContent.getHot()).isEqualTo(UPDATED_HOT);
         assertThat(testContent.getState()).isEqualTo(UPDATED_STATE);

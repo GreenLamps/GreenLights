@@ -4,7 +4,6 @@ export class ContentGreenLights {
                 public source?: string,
                 public author?: string,
                 public cover?: string,
-                public image?: any,
                 public content?: string,
                 public hot?: number,
                 public state?: number,

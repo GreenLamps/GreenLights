@@ -36,7 +36,7 @@ export class CategoryGreenLightsService {
         });
     }
 
-    findByLevel(level: number): Observable<CategoryGreenLights>{
+    findByLevel(level: number): Observable<CategoryGreenLights> {
         return this.http.get(`${this.resourceUrl}/level/${level}`)
             .map( (res: Response) => this.convertResponse(res))
         ;

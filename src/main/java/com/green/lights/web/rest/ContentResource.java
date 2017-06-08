@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.ZonedDateTime;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -37,7 +38,7 @@ public class ContentResource {
     private final Logger log = LoggerFactory.getLogger(ContentResource.class);
 
     private static final String ENTITY_NAME = "content";
-        
+
     private final ContentService contentService;
 
     public ContentResource(ContentService contentService) {
@@ -58,6 +59,7 @@ public class ContentResource {
         if (contentDTO.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new content cannot already have an ID")).body(null);
         }
+        contentDTO.setCreateTime(ZonedDateTime.now());
         ContentDTO result = contentService.save(contentDTO);
         return ResponseEntity.created(new URI("/api/contents/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
@@ -80,6 +82,7 @@ public class ContentResource {
         if (contentDTO.getId() == null) {
             return createContent(contentDTO);
         }
+        contentDTO.setCreateTime(ZonedDateTime.now());
         ContentDTO result = contentService.save(contentDTO);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, contentDTO.getId().toString()))
@@ -133,7 +136,7 @@ public class ContentResource {
      * SEARCH  /_search/contents?query=:query : search for the content corresponding
      * to the query.
      *
-     * @param query the query of the content search 
+     * @param query the query of the content search
      * @param pageable the pagination information
      * @return the result of the search
      */

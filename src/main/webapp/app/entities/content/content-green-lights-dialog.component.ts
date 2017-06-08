@@ -10,6 +10,7 @@ import { ContentGreenLights } from './content-green-lights.model';
 import { ContentGreenLightsPopupService } from './content-green-lights-popup.service';
 import { ContentGreenLightsService } from './content-green-lights.service';
 import { CategoryGreenLights, CategoryGreenLightsService } from '../category';
+import content = CKEDITOR.dialog.definition.content;
 
 @Component({
     selector: 'jhi-content-green-lights-dialog',
@@ -20,6 +21,7 @@ export class ContentGreenLightsDialogComponent implements OnInit {
     content: ContentGreenLights;
     authorities: any[];
     isSaving: boolean;
+    file: Array<Object>;
 
     categories: CategoryGreenLights[];
 
@@ -31,6 +33,7 @@ export class ContentGreenLightsDialogComponent implements OnInit {
         private categoryService: CategoryGreenLightsService,
         private eventManager: EventManager
     ) {
+        this.file = [];
     }
 
     ngOnInit() {
@@ -101,6 +104,14 @@ export class ContentGreenLightsDialogComponent implements OnInit {
 
     trackCategoryById(index: number, item: CategoryGreenLights) {
         return item.id;
+    }
+    onUploadUrl(event) {
+        console.log(event);
+        this.content.cover = event[event.length-1];
+    }
+    onRemoveUrl(event) {
+        console.log(event);
+        this.content.cover = event[event.length-1];
     }
 }
 

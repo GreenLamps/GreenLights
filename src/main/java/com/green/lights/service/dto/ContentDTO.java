@@ -26,17 +26,13 @@ public class ContentDTO implements Serializable {
 
     private String cover;
 
-    @Lob
-    private byte[] image;
-    private String imageContentType;
-
     private String content;
 
-    private Integer hot;
+    private Integer hot             = 0;
 
-    private Integer state;
+    private Integer state           = 0;
 
-    private Integer viewCount;
+    private Integer viewCount       = 0;
 
     private ZonedDateTime createTime;
 
@@ -84,22 +80,6 @@ public class ContentDTO implements Serializable {
 
     public void setCover(String cover) {
         this.cover = cover;
-    }
-
-    public byte[] getImage() {
-        return image;
-    }
-
-    public void setImage(byte[] image) {
-        this.image = image;
-    }
-
-    public String getImageContentType() {
-        return imageContentType;
-    }
-
-    public void setImageContentType(String imageContentType) {
-        this.imageContentType = imageContentType;
     }
 
     public String getContent() {
@@ -195,7 +175,6 @@ public class ContentDTO implements Serializable {
             ", source='" + getSource() + "'" +
             ", author='" + getAuthor() + "'" +
             ", cover='" + getCover() + "'" +
-            ", image='" + getImage() + "'" +
             ", content='" + getContent() + "'" +
             ", hot='" + getHot() + "'" +
             ", state='" + getState() + "'" +

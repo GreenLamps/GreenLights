@@ -6,6 +6,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.Generated;
 import org.hibernate.annotations.GenerationTime;
 import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -44,12 +45,8 @@ public class Content implements Serializable {
     @Column(name = "cover")
     private String cover;
 
-    @Lob
-    @Column(name = "image")
-    private byte[] image;
-
-    @Column(name = "image_content_type")
-    private String imageContentType;
+    @Transient
+    private MultipartFile file;
 
     @Column(name = "content")
     private String content;
@@ -64,7 +61,6 @@ public class Content implements Serializable {
     private Integer viewCount = 0;
 
     @Column(name = "create_time")
-    @Generated(GenerationTime.INSERT)
     private ZonedDateTime createTime;
 
     @ManyToOne
@@ -139,32 +135,6 @@ public class Content implements Serializable {
 
     public void setCover(String cover) {
         this.cover = cover;
-    }
-
-    public byte[] getImage() {
-        return image;
-    }
-
-    public Content image(byte[] image) {
-        this.image = image;
-        return this;
-    }
-
-    public void setImage(byte[] image) {
-        this.image = image;
-    }
-
-    public String getImageContentType() {
-        return imageContentType;
-    }
-
-    public Content imageContentType(String imageContentType) {
-        this.imageContentType = imageContentType;
-        return this;
-    }
-
-    public void setImageContentType(String imageContentType) {
-        this.imageContentType = imageContentType;
     }
 
     public String getContent() {
@@ -295,6 +265,14 @@ public class Content implements Serializable {
         this.location = location;
     }
 
+    public MultipartFile getFile() {
+        return file;
+    }
+
+    public void setFile(MultipartFile file) {
+        this.file = file;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -323,8 +301,6 @@ public class Content implements Serializable {
             ", source='" + getSource() + "'" +
             ", author='" + getAuthor() + "'" +
             ", cover='" + getCover() + "'" +
-            ", image='" + getImage() + "'" +
-            ", imageContentType='" + imageContentType + "'" +
             ", content='" + getContent() + "'" +
             ", hot='" + getHot() + "'" +
             ", state='" + getState() + "'" +

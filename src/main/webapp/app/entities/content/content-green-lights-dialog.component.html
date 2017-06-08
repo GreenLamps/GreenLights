@@ -46,14 +46,29 @@
                    [(ngModel)]="content.author"
             />
         </div>
-        <div class="form-group">
+        <!--<div class="form-group">
             <label class="form-control-label" jhiTranslate="greenLightsApp.content.cover"
                    for="field_cover">Cover</label>
             <input type="text" class="form-control" name="cover" id="field_cover"
                    [(ngModel)]="content.cover"
             />
-        </div>
+        </div>-->
         <div class="form-group">
+            <image-upload
+                [max]="1"
+                [url]="'/api/upload/image'"
+                [initFileUrl]="content.cover"
+                [buttonCaption]="'选择图片'"
+                [dropBoxMessage]="'拖动到此区域'"
+                (onUploadUrl)="onUploadUrl($event)"
+                (onRemoveUrl)="onRemoveUrl($event)"
+
+            >
+
+            </image-upload>
+
+        </div>
+        <!--<div class="form-group">
             <label class="form-control-label" jhiTranslate="greenLightsApp.content.image"
                    for="field_image">Image</label>
             <div>
@@ -74,7 +89,7 @@
             />
             <input type="hidden" class="form-control" name="imageContentType" id="field_imageContentType"
                    [(ngModel)]="content.imageContentType"/>
-        </div>
+        </div>-->
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="greenLightsApp.content.content">Content</label>
             <!--for="field_content"-->

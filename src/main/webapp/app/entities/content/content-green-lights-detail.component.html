@@ -19,14 +19,6 @@
         <dd>
             <span>{{content.cover}}</span>
         </dd>
-        <dt><span jhiTranslate="greenLightsApp.content.image">Image</span></dt>
-        <dd>
-            <div *ngIf="content.image">
-                <a (click)="openFile(content.imageContentType, content.image)"
-                   jhiTranslate="entity.action.open">open</a>
-                {{content.imageContentType}}, {{byteSize(content.image)}}
-            </div>
-        </dd>
         <dt><span jhiTranslate="greenLightsApp.content.content">Content</span></dt>
         <dd>
             <span>{{content.content}}</span>

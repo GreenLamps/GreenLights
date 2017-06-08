@@ -34,8 +34,7 @@
             <th jhiSortBy="source"><span jhiTranslate="greenLightsApp.content.source">Source</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="author"><span jhiTranslate="greenLightsApp.content.author">Author</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="cover"><span jhiTranslate="greenLightsApp.content.cover">Cover</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="image"><span jhiTranslate="greenLightsApp.content.image">Image</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="content"><span jhiTranslate="greenLightsApp.content.content">Content</span> <span class="fa fa-sort"></span></th>
+            <!--<th jhiSortBy="content"><span jhiTranslate="greenLightsApp.content.content">Content</span> <span class="fa fa-sort"></span></th>-->
             <th jhiSortBy="hot"><span jhiTranslate="greenLightsApp.content.hot">Hot</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="state"><span jhiTranslate="greenLightsApp.content.state">State</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="viewCount"><span jhiTranslate="greenLightsApp.content.viewCount">View Count</span> <span class="fa fa-sort"></span></th>
@@ -51,12 +50,10 @@
                 <td>{{content.title}}</td>
                 <td>{{content.source}}</td>
                 <td>{{content.author}}</td>
-                <td>{{content.cover}}</td>
                 <td>
-                    <a *ngIf="content.image" (click)="openFile(content.imageContentType, content.image)" jhiTranslate="entity.action.open">open</a>
-                    <span *ngIf="content.image">{{content.imageContentType}}, {{byteSize(content.image)}}</span>
+                    <div *ngIf="content.cover"><img src="{{content.cover}}" height="50px" width="50px"/></div>
                 </td>
-                <td>{{content.content}}</td>
+                <!--<td>{{content.content}}</td>-->
                 <td>{{content.hot}}</td>
                 <td>{{content.state}}</td>
                 <td>{{content.viewCount}}</td>
