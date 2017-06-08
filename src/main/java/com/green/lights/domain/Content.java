@@ -45,9 +45,6 @@ public class Content implements Serializable {
     @Column(name = "cover")
     private String cover;
 
-    @Transient
-    private MultipartFile file;
-
     @Column(name = "content")
     private String content;
 
@@ -76,6 +73,25 @@ public class Content implements Serializable {
 
     @Column(name = "location")
     private String location;
+
+    public Content() {
+    }
+
+    public Content(Long id, String title, String source, String author, String cover, Integer hot, Integer state, Integer viewCount, ZonedDateTime createTime, Category category, String url, String location) {
+        this.id = id;
+        this.title = title;
+        this.source = source;
+        this.author = author;
+        this.cover = cover;
+        this.hot = hot;
+        this.state = state;
+        this.viewCount = viewCount;
+        this.createTime = createTime;
+        this.category = category;
+        this.attachments = attachments;
+        this.url = url;
+        this.location = location;
+    }
 
     public Long getId() {
         return id;
@@ -248,6 +264,7 @@ public class Content implements Serializable {
         this.url = url;
         return this;
     }
+
     public void setUrl(String url) {
         this.url = url;
     }
@@ -263,14 +280,6 @@ public class Content implements Serializable {
 
     public void setLocation(String location) {
         this.location = location;
-    }
-
-    public MultipartFile getFile() {
-        return file;
-    }
-
-    public void setFile(MultipartFile file) {
-        this.file = file;
     }
 
     @Override

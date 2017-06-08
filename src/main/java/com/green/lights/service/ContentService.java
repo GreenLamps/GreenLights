@@ -1,9 +1,9 @@
 package com.green.lights.service;
 
+import com.green.lights.domain.Content;
 import com.green.lights.service.dto.ContentDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import java.util.List;
 
 /**
  * Service Interface for managing Content.
@@ -20,7 +20,7 @@ public interface ContentService {
 
     /**
      *  Get all the contents.
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */
@@ -42,10 +42,18 @@ public interface ContentService {
     void delete(Long id);
 
     /**
+     * find by category
+     * @param id
+     * @param pageable
+     * @return
+     */
+    Page<ContentDTO> findByCategory(Long id, Pageable pageable);
+
+    /**
      * Search for the content corresponding to the query.
      *
      *  @param query the query of the search
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */

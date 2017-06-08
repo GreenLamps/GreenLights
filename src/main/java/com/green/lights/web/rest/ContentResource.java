@@ -133,6 +133,22 @@ public class ContentResource {
     }
 
     /**
+     * get /content/category/:id : get content by category id
+     * @param id
+     * @param pageable
+     * @return the ResponseEntity with status 200 (OK) and the list of contents in body
+     */
+    @GetMapping("/content/category/{id}")
+    @Timed
+    public ResponseEntity<List<ContentDTO>> getContentByCategory( @PathVariable Long id, @ApiParam Pageable pageable){
+        log.debug("REST request to get Content by Category : {}", id);
+        Page<ContentDTO> contentDTOPage = contentService.findByCategory(id, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(contentDTOPage, "/api/contents/category/"+id);
+        return new ResponseEntity<>(contentDTOPage.getContent(), headers, HttpStatus.OK);
+
+    }
+
+    /**
      * SEARCH  /_search/contents?query=:query : search for the content corresponding
      * to the query.
      *

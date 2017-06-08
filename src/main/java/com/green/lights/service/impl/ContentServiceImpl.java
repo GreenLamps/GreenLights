@@ -28,7 +28,7 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class ContentServiceImpl implements ContentService{
 
     private final Logger log = LoggerFactory.getLogger(ContentServiceImpl.class);
-    
+
     private final ContentRepository contentRepository;
 
     private final ContentMapper contentMapper;
@@ -59,7 +59,7 @@ public class ContentServiceImpl implements ContentService{
 
     /**
      *  Get all the contents.
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */
@@ -96,6 +96,18 @@ public class ContentServiceImpl implements ContentService{
         log.debug("Request to delete Content : {}", id);
         contentRepository.delete(id);
         contentSearchRepository.delete(id);
+    }
+
+    /**
+     * find by category
+     * @param id
+     * @param pageable
+     * @return
+     */
+    @Override
+    public Page<ContentDTO> findByCategory(Long id, Pageable pageable) {
+        Page<Content> result = contentRepository.findByCategory(id, pageable);
+        return result.map( content -> contentMapper.toDto(content));
     }
 
     /**
