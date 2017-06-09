@@ -10,6 +10,7 @@ export class ContentGreenLights {
                 public viewCount?: number,
                 public createTime?: any,
                 public categoryId?: number,
+                public categoryName?: string,
                 public attachmentId?: number,
                 public url?: string,
                 public location?: string) {

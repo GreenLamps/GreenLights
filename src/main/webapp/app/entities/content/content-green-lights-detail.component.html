@@ -42,7 +42,7 @@
         <dt><span jhiTranslate="greenLightsApp.content.category">Category</span></dt>
         <dd>
             <div *ngIf="content.categoryId">
-                <a [routerLink]="['/category-green-lights', content.categoryId]">{{content.categoryId}}</a>
+                <a [routerLink]="['/category-green-lights', content.categoryId]">{{content.categoryName}}</a>
             </div>
         </dd>
         <dt><span jhiTranslate="greenLightsApp.content.url">URL</span></dt>

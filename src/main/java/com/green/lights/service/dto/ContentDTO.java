@@ -38,6 +38,8 @@ public class ContentDTO implements Serializable {
 
     private Long categoryId;
 
+    private String categoryName;
+
     private String url;
 
     private String location;
@@ -144,6 +146,14 @@ public class ContentDTO implements Serializable {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
     @Override

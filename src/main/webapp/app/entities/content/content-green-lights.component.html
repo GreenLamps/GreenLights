@@ -60,7 +60,7 @@
                 <td>{{content.createTime | date:'medium'}}</td>
                 <td>
                     <div *ngIf="content.categoryId">
-                        <a [routerLink]="['../category-green-lights', content.categoryId  ]" >{{content.categoryId}}</a>
+                        <a [routerLink]="['../category-green-lights', content.categoryId  ]" >{{content.categoryName}}</a>
                     </div>
                 </td>
                 <td>{{content.url}}</td>
