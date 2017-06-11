@@ -138,7 +138,7 @@ public class ContentResource {
      * @param pageable
      * @return the ResponseEntity with status 200 (OK) and the list of contents in body
      */
-    @GetMapping("/content/category/{id}")
+    @GetMapping("/contents/category/{id}")
     @Timed
     public ResponseEntity<List<ContentDTO>> getContentByCategory( @PathVariable Long id, @ApiParam Pageable pageable){
         log.debug("REST request to get Content by Category : {}", id);
