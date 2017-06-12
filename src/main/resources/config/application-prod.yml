@@ -150,4 +150,4 @@ application:
     storage:
         uri:
             base: http://localhost:8080
-            images: ${application.storage.uri.base}/images/
+            images: ${application.storage.uri.base}/public/files/images/%s/
