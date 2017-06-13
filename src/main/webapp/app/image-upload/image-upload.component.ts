@@ -263,9 +263,9 @@ export class ImageUploadComponent implements OnInit {
     files: FileHolder[] = [];
 
     @Output()
-    onUploadUrl:EventEmitter<string[]> = new EventEmitter();
+    onUploadUrl: EventEmitter<string[]> = new EventEmitter();
     @Output()
-    onRemoveUrl:EventEmitter<string[]> = new EventEmitter();
+    onRemoveUrl: EventEmitter<string[]> = new EventEmitter();
     filesUrl: string[] = [];
 
     showFileTooLargeMessage: boolean = false;
@@ -290,9 +290,9 @@ export class ImageUploadComponent implements OnInit {
         if (!this.fileTooLargeMessage) {
             this.fileTooLargeMessage = 'An image was too large and was not uploaded.' + (this.maxFileSize ? (' The maximum file size is ' + this.maxFileSize / 1024) + 'KiB.' : '');
         }
-        if (this.initFileUrl){
+        if (this.initFileUrl) {
             console.log(this.initFileUrl);
-            let fileUrls = this.initFileUrl.split(";");
+            let fileUrls = this.initFileUrl.split(';');
             this.fileCounter = fileUrls.length;
             for (let i = 0; i < fileUrls.length; i++) {
                 const fileHolder: FileHolder = new FileHolder(fileUrls[i], null);
@@ -353,8 +353,6 @@ export class ImageUploadComponent implements OnInit {
                 this.files.push(fileHolder);
 
             }, false);
-
-
             reader.readAsDataURL(file);
         }
     }

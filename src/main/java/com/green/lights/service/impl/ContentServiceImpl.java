@@ -110,6 +110,7 @@ public class ContentServiceImpl implements ContentService{
         return result.map( content -> contentMapper.toDto(content));
     }
 
+
     /**
      * Search for the content corresponding to the query.
      *

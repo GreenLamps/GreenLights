@@ -10,6 +10,7 @@ import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -146,6 +147,20 @@ public class ContentResource {
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(contentDTOPage, "/api/contents/category/"+id);
         return new ResponseEntity<>(contentDTOPage.getContent(), headers, HttpStatus.OK);
 
+    }
+
+    /**
+     * Get /content/category/{id}/{top}
+     * @param id
+     * @param top
+     * @return
+     */
+    @GetMapping("/contents/category/{id}/{top}")
+    @Timed
+    public ResponseEntity<List<ContentDTO>> getTopContentByCategory(@PathVariable Long id, @PathVariable int top){
+        Pageable pageable = new PageRequest(0, top);
+        Page<ContentDTO> contentDTOPage = contentService.findByCategory(id, pageable);
+        return new ResponseEntity<>(contentDTOPage.getContent(), HttpStatus.OK);
     }
 
     /**

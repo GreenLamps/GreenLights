@@ -72,6 +72,17 @@ public class CategoryServiceImpl implements CategoryService{
     }
 
     /**
+     * Get all the categories
+     * @return
+     */
+    @Override
+    public List<CategoryDTO> findAll() {
+        log.debug("Request to get all Categories");
+        List<Category> result = categoryRepository.findAll();
+        return categoryMapper.toDto(result);
+    }
+
+    /**
      *  Get one category by id.
      *
      *  @param id the id of the entity

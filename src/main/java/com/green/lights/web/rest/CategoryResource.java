@@ -69,6 +69,7 @@ public class CategoryResource {
 
     @GetMapping("/categories/level/{level}")
     @Timed
+    @Secured(AuthoritiesConstants.ADMIN)
     public ResponseEntity<List<CategoryDTO>> getLevelCategory(@PathVariable Integer level){
         log.debug("REST request to getLevelCategory: {}", level);
         List<CategoryDTO> categoryDTOS = categoryService.findAllByLevel(level);
@@ -111,6 +112,17 @@ public class CategoryResource {
         Page<CategoryDTO> page = categoryService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/categories");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
+    /**
+     * GET /categories/all : get all the categories
+     * @return
+     */
+    @GetMapping("/categories/all")
+    @Timed
+    public ResponseEntity<List<CategoryDTO>> getAllCategories(){
+        log.debug("REST request to get all Categories");
+        return new ResponseEntity<>(categoryService.findAll(), HttpStatus.OK);
     }
 
     /**

@@ -36,6 +36,12 @@ export class CategoryGreenLightsService {
         });
     }
 
+    findAll(): Observable<CategoryGreenLights> {
+        return this.http.get(`${this.resourceUrl}/all`)
+            .map( (res: Response) => this.convertResponse(res))
+            ;
+    }
+
     findByLevel(level: number): Observable<CategoryGreenLights> {
         return this.http.get(`${this.resourceUrl}/level/${level}`)
             .map( (res: Response) => this.convertResponse(res))

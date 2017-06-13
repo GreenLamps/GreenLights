@@ -39,7 +39,7 @@ export class ContentGreenLightsDialogComponent implements OnInit {
     ngOnInit() {
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
-        this.categoryService.findByLevel(2).subscribe(
+        this.categoryService.findAll().subscribe(
             (res: Response) => { this.categories = res.json(); }, (res: Response) => this.onError(res.json()));
     }
     byteSize(field) {
