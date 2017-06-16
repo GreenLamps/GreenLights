@@ -23,4 +23,6 @@ public interface ContentRepository extends JpaRepository<Content,Long> {
     @Query("select new Content(c.id, c.title, c.source, c.author, c.cover, c.hot, c.state, c.viewCount, c.createTime, c.category, c.url, c.location) " +
         "from Content c where c.category.id = :id order by c.createTime desc ")
     Page<Content> findByCategory(@Param("id") Long id, Pageable pageable);
+
+    Content findTopByCategoryIdOrderByHotDesc(Long categoryId);
 }

@@ -164,6 +164,17 @@ public class ContentResource {
     }
 
     /**
+     * Get /content/category/top/{categoryId}
+     * @param categoryId
+     * @return
+     */
+    @GetMapping("/contents/category/top/{categoryId}")
+    @Timed
+    public ResponseEntity<ContentDTO> getTopContentByCategory(@PathVariable Long categoryId){
+        return new ResponseEntity<>(contentService.findTopByCategoryId(categoryId), HttpStatus.OK);
+    }
+
+    /**
      * SEARCH  /_search/contents?query=:query : search for the content corresponding
      * to the query.
      *

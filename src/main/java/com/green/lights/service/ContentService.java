@@ -50,6 +50,13 @@ public interface ContentService {
     Page<ContentDTO> findByCategory(Long id, Pageable pageable);
 
     /**
+     * find by category id
+     * @param categoryId
+     * @return
+     */
+    ContentDTO findTopByCategoryId(Long categoryId);
+
+    /**
      * Search for the content corresponding to the query.
      *
      *  @param query the query of the search

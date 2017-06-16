@@ -110,6 +110,16 @@ public class ContentServiceImpl implements ContentService{
         return result.map( content -> contentMapper.toDto(content));
     }
 
+    /**
+     * find by category id
+     * @param categoryId
+     * @return
+     */
+    @Override
+    public ContentDTO findTopByCategoryId(Long categoryId) {
+        return contentMapper.toDto(contentRepository.findTopByCategoryIdOrderByHotDesc(categoryId));
+    }
+
 
     /**
      * Search for the content corresponding to the query.
