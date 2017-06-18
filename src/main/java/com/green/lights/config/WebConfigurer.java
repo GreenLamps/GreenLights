@@ -163,6 +163,8 @@ public class WebConfigurer implements ServletContextInitializer, EmbeddedServlet
         CorsConfiguration config = jHipsterProperties.getCors();
         config.addExposedHeader("X-Total-Count");
         config.addExposedHeader(HttpHeaders.LINK);
+        config.addExposedHeader("DETAILS_PRE");
+        config.addExposedHeader("DETAILS_NEXT");
         config.addAllowedHeader("*");
         if (config.getAllowedOrigins() != null && !config.getAllowedOrigins().isEmpty()) {
             log.debug("Registering CORS filter");

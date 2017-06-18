@@ -35,6 +35,22 @@ public interface ContentService {
     ContentDTO findOne(Long id);
 
     /**
+     * get the pre one
+     * @param categoryId
+     * @param id
+     * @return
+     */
+    ContentDTO findOnePre(Long categoryId, Long id);
+
+    /**
+     * get the next one
+     * @param categoryId
+     * @param id
+     * @return
+     */
+    ContentDTO findOneNext(Long categoryId, Long id);
+
+    /**
      *  Delete the "id" content.
      *
      *  @param id the id of the entity

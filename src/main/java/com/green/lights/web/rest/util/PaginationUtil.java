@@ -39,6 +39,21 @@ public final class PaginationUtil {
         return headers;
     }
 
+    public static HttpHeaders generateDetailPreHttpHeaders(Long pre, HttpHeaders headers) {
+        if(headers!=null && pre != null) {
+            headers.add("DETAILS_PRE", String.valueOf(pre));
+        }
+
+        return headers;
+    }
+
+    public static HttpHeaders generateDetailNextHttpHeaders(Long next, HttpHeaders headers) {
+        if(headers!=null &&next != null) {
+            headers.add("DETAILS_NEXT", String.valueOf(next));
+        }
+        return headers;
+    }
+
     private static String generateUri(String baseUrl, int page, int size) {
         return UriComponentsBuilder.fromUriString(baseUrl).queryParam("page", page).queryParam("size", size).toUriString();
     }

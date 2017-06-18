@@ -7,8 +7,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.data.repository.query.Param;
 
-import java.util.List;
-
 /**
  * Spring Data JPA repository for the Content entity.
  */
@@ -25,4 +23,6 @@ public interface ContentRepository extends JpaRepository<Content,Long> {
     Page<Content> findByCategory(@Param("id") Long id, Pageable pageable);
 
     Content findTopByCategoryIdOrderByHotDesc(Long categoryId);
+    Content findTopByCategoryIdAndIdLessThanOrderByCreateTimeDesc(Long categoryId, Long Id);
+    Content findTopByCategoryIdAndIdGreaterThanOrderByCreateTimeDesc(Long categoryI, Long Id);
 }

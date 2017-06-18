@@ -86,6 +86,16 @@ public class ContentServiceImpl implements ContentService{
         return contentDTO;
     }
 
+    @Override
+    public ContentDTO findOnePre(Long categoryId, Long id) {
+        return contentMapper.toDto(contentRepository.findTopByCategoryIdAndIdLessThanOrderByCreateTimeDesc(categoryId, id));
+    }
+
+    @Override
+    public ContentDTO findOneNext(Long categoryId, Long id) {
+        return contentMapper.toDto(contentRepository.findTopByCategoryIdAndIdGreaterThanOrderByCreateTimeDesc(categoryId, id));
+    }
+
     /**
      *  Delete the  content by id.
      *

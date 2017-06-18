@@ -1,6 +1,7 @@
 package com.green.lights.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.green.lights.repository.ContentRepository;
 import com.green.lights.service.ContentService;
 import com.green.lights.web.rest.util.HeaderUtil;
 import com.green.lights.web.rest.util.PaginationUtil;
@@ -9,6 +10,7 @@ import io.swagger.annotations.ApiParam;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -116,7 +118,16 @@ public class ContentResource {
     public ResponseEntity<ContentDTO> getContent(@PathVariable Long id) {
         log.debug("REST request to get Content : {}", id);
         ContentDTO contentDTO = contentService.findOne(id);
-        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(contentDTO));
+        HttpHeaders httpHeaders = new HttpHeaders();
+        ContentDTO pre = contentService.findOnePre(contentDTO.getCategoryId(), contentDTO.getId());
+        if (pre != null){
+            httpHeaders = PaginationUtil.generateDetailPreHttpHeaders(pre.getId(), httpHeaders);
+        }
+        ContentDTO next = contentService.findOneNext(contentDTO.getCategoryId(), contentDTO.getId());
+        if (next != null){
+            httpHeaders = PaginationUtil.generateDetailNextHttpHeaders(next.getId(), httpHeaders);
+        }
+        return new ResponseEntity<ContentDTO>(contentDTO, httpHeaders, HttpStatus.OK);
     }
 
     /**
