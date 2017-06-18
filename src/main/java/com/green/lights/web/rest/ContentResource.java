@@ -118,6 +118,8 @@ public class ContentResource {
     public ResponseEntity<ContentDTO> getContent(@PathVariable Long id) {
         log.debug("REST request to get Content : {}", id);
         ContentDTO contentDTO = contentService.findOne(id);
+        contentDTO.setViewCount(contentDTO.getViewCount() + 1);
+        contentService.save(contentDTO);
         HttpHeaders httpHeaders = new HttpHeaders();
         ContentDTO pre = contentService.findOnePre(contentDTO.getCategoryId(), contentDTO.getId());
         if (pre != null){
@@ -127,7 +129,7 @@ public class ContentResource {
         if (next != null){
             httpHeaders = PaginationUtil.generateDetailNextHttpHeaders(next.getId(), httpHeaders);
         }
-        return new ResponseEntity<ContentDTO>(contentDTO, httpHeaders, HttpStatus.OK);
+        return new ResponseEntity<>(contentDTO, httpHeaders, HttpStatus.OK);
     }
 
     /**
