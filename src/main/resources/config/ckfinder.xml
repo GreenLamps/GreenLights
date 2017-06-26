@@ -18,7 +18,7 @@
 	http://docs.cksource.com/CKFinder_2.x/Developers_Guide/Java/Configuration/baseURL_and_baseDir
 	-->
 	<baseDir>/data/greenlights/</baseDir>
-	<baseURL>http://localhost:8080/public/files/</baseURL>
+	<baseURL>http://www.lowcarbon-lighting.com:8080/public/files/</baseURL>
 	<licenseKey></licenseKey>
 	<licenseName></licenseName>
 	<!--

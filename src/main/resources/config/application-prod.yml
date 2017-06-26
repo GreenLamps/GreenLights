@@ -28,9 +28,9 @@ spring:
             enabled: false
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:mysql://localhost:3306/GreenLights?useUnicode=true&characterEncoding=utf8&useSSL=false
-        username: root
-        password:
+        url: jdbc:mysql://localhost:3306/green_lights?useUnicode=true&characterEncoding=utf8&useSSL=false
+        username: user_for_gl
+        password: gl_123456
         hikari:
             data-source-properties:
                 cachePrepStmts: true
@@ -149,5 +149,5 @@ jhipster:
 application:
     storage:
         uri:
-            base: http://localhost:8080
+            base: http://www.lowcarbon-lighting.com:8080
             images: ${application.storage.uri.base}/public/files/images/%s/
