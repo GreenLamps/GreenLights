@@ -18,6 +18,7 @@ eureka:
         prefer-ip-address: true
     client:
         service-url:
+            enabled: true
             defaultZone: http://admin:${jhipster.registry.password}@localhost:8761/eureka/
 
 spring:
@@ -29,8 +30,8 @@ spring:
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
         url: jdbc:mysql://localhost:3306/green_lights?useUnicode=true&characterEncoding=utf8&useSSL=false
-        username: user_for_gl
-        password: gl_123456
+        username: root
+        password: root
         hikari:
             data-source-properties:
                 cachePrepStmts: true
