@@ -89,7 +89,7 @@ liquibase:
 server:
     port: 8080
     compression:
-        enabled: true
+        enabled: false
         mime-types: text/html,text/xml,text/plain,text/css, application/javascript, application/json
         min-response-size: 1024
 
@@ -108,6 +108,13 @@ jhipster:
         ehcache: # Ehcache configuration
             time-to-live-seconds: 3600 # By default objects stay 1 hour in the cache
             max-entries: 1000 # Number of objects in each cache entry
+    cors:
+        allowed-origins: "*"
+        allowed-methods: GET, PUT, POST, DELETE, OPTIONS
+        allowed-headers: "*"
+        exposed-headers:
+        allow-credentials: true
+        max-age: 1800
     security:
         authentication:
             jwt:
