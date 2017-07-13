@@ -51,11 +51,7 @@ spring:
     data:
         elasticsearch:
             cluster-name:
-            cluster-nodes:
-            properties:
-                path:
-                    logs: elasticsearch/log
-                    data: elasticsearch/data
+            cluster-nodes: localhost:9300
     mail:
         host: localhost
         port: 25

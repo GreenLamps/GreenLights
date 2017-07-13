@@ -13,11 +13,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
-
 import static org.elasticsearch.index.query.QueryBuilders.*;
 
 /**
@@ -53,7 +48,7 @@ public class ContentServiceImpl implements ContentService{
         Content content = contentMapper.toEntity(contentDTO);
         content = contentRepository.save(content);
         ContentDTO result = contentMapper.toDto(content);
-        contentSearchRepository.save(content);
+//        contentSearchRepository.save(content);
         return result;
     }
 
