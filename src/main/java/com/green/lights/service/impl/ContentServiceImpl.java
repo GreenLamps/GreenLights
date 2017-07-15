@@ -100,7 +100,7 @@ public class ContentServiceImpl implements ContentService{
     public void delete(Long id) {
         log.debug("Request to delete Content : {}", id);
         contentRepository.delete(id);
-        contentSearchRepository.delete(id);
+    //    contentSearchRepository.delete(id);
     }
 
     /**
